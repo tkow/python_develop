@@ -15,8 +15,8 @@ Vagrant.configure(2) do |config|
  config.vm.define :pyev do |node|
 		node.vm.box = "bento/centos-6.7"
   	node.vm.hostname = "py-cent"
-    node.vm.network :private_network, ip: "193.168.33.13"
-		node.vm.network :forwarded_port, guest: 3000, host: 800
+		node.vm.network :private_network, id: "default-network", type: "dhcp", ip: "192.168.34.0"
+    node.vm.network :forwarded_port, guest: 3000, host: 8000
     node.ssh.forward_agent = true
     node.vm.provision :shell, :path => "provision1.sh"
 		node.vm.provider :virtualbox do |vb|
